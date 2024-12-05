@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { menu, close, logo } from "../assets";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  console.log("🚀 ~ Navbar ~ scrolled:", scrolled);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,15 @@ const Navbar = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme); // Change l'attribut du thème
+    localStorage.setItem("theme", theme); // Sauvegarde le thème
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
 
   return (
     <nav
@@ -45,12 +56,11 @@ const Navbar = () => {
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex ">
-            Sami Ayachi &nbsp;
-            <span className="sm:block hidden"> | JavaScript Mastery</span>
+            EPI-FRATENITÉ SANS BANNIÉRES
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="list-none hidden sm:flex flex-row gap-10 items-center">
           {navLinks.map((nav) => (
             <li
               key={nav.id}
@@ -62,6 +72,25 @@ const Navbar = () => {
               <a href={`#${nav.id}`}>{nav.title}</a>
             </li>
           ))}
+          <button className="hidden sm:flex bg-secondary text-white px-6 py-2 rounded-lg font-medium">
+            se connecter
+          </button>
+          <button
+            onClick={toggleTheme}
+            className="ml-4 bg-secondary text-white px-4 py-2 rounded-lg flex items-center gap-2"
+          >
+            {theme === "light" ? (
+              <>
+                <FontAwesomeIcon icon={faMoon} className="w-5 h-5" />
+                Sombre
+              </>
+            ) : (
+              <>
+                <FontAwesomeIcon icon={faSun} className="w-5 h-5" />
+                Clair
+              </>
+            )}
+          </button>
         </ul>
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
