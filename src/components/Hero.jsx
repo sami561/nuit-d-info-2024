@@ -5,6 +5,7 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { logo } from "../assets";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Hero = () => {
   return (

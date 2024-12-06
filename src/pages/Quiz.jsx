@@ -4,6 +4,7 @@ import { useState } from "react";
 import Question from "../components/Question";
 import Fireworks from "../components/Fireworks";
 import { questions } from "../constants/index";
+import Footer from "../components/Footer";
 const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [feedback, setFeedback] = useState("");
@@ -36,35 +37,38 @@ const Quiz = () => {
   };
 
   return (
-    <div className="flex items-center justify-center w-[100vw] h-[100vh] mt-12">
-      {/* Fireworks component */}
-      {showFireworks && <Fireworks show={showFireworks} />}
+    <>
+      <div className="flex items-center justify-center w-[100vw] h-[100vh] mt-12">
+        {/* Fireworks component */}
+        {showFireworks && <Fireworks show={showFireworks} />}
 
-      <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
-        className="flex-[0.75] bg-black-100 p-8 rounded-2xl h-[80vh] w-[80vw]"
-      >
-        <Question
-          key={currentQuestionIndex}
-          img={questions[currentQuestionIndex].image}
-          question={questions[currentQuestionIndex].question}
-          onChoice={onChoice}
-        />
+        <motion.div
+          variants={slideIn("left", "tween", 0.2, 1)}
+          className="flex-[0.75] bg-black-100 p-8 rounded-2xl h-[80vh] w-[80vw]"
+        >
+          <Question
+            key={currentQuestionIndex}
+            img={questions[currentQuestionIndex].image}
+            question={questions[currentQuestionIndex].question}
+            onChoice={onChoice}
+          />
 
-        <div className="mt-4 text-center">
-          <p className="text-white">{feedback}</p>
+          <div className="mt-4 text-center">
+            <p className="text-white">{feedback}</p>
 
-          {feedback && (
-            <button
-              onClick={nextQuestion}
-              className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary mt-4"
-            >
-              Next Question
-            </button>
-          )}
-        </div>
-      </motion.div>
-    </div>
+            {feedback && (
+              <button
+                onClick={nextQuestion}
+                className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary mt-4"
+              >
+                Next Question
+              </button>
+            )}
+          </div>
+        </motion.div>
+      </div>
+      <Footer />
+    </>
   );
 };
 

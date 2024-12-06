@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import { logo } from "../assets";
-const Footer = () => {
+
+const Footer = ({ theme }) => {
   return (
-    <footer className=" bg-slate-400 flex flex-row justify-between ">
-      <aside className="  flex flex-row p-5 align-middle gap-4">
+    <footer
+      className={`${
+        theme === "light"
+          ? "bg-white-100 text-black-100"
+          : "bg-primary text-white-100"
+      } flex flex-row justify-between p-5`}
+    >
+      <aside className="flex flex-row align-middle gap-4">
         <img src={logo} alt="logo" width="50" height="50" />
         <Link href={"https://ratiscrum.fr/"}>
           <p className="opacity-70 hover:opacity-100 transition mt-3">

@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { menu, close, logo } from "../assets";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = () => {
+const Navbar = ({ theme, setTheme }) => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,8 +40,12 @@ const Navbar = () => {
       className={`${
         styles.paddingX
       } w-full flex items-center py-5 fixed top-0 z-20 ${
-        scrolled ? "bg-primary" : "bg-transparent"
-      } `}
+        scrolled
+          ? "bg-primary"
+          : theme === "light"
+          ? "bg-white-100"
+          : "bg-primary"
+      }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -55,7 +57,11 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="font-bold cursor-pointer flex">
+          <p
+            className={`font-bold cursor-pointer flex ${
+              theme === "light" ? "text-black-100" : "text-white-100"
+            }`}
+          >
             <span className="text-purple-500">EPI-</span>
             <span className="text-cyan-400">FRATENITÉ SANS BANNIÉRES</span>
           </p>
@@ -66,7 +72,11 @@ const Navbar = () => {
             <li
               key={nav.id}
               className={`${
-                active === nav.title ? "text-white" : "text-secondary"
+                active === nav.title
+                  ? "text-white"
+                  : theme === "light"
+                  ? "text-black-100"
+                  : "text-secondary"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.title)}
             >
@@ -76,7 +86,7 @@ const Navbar = () => {
 
           <button
             onClick={toggleTheme}
-            className="ml-4  text-white px-4 py-2 rounded-lg flex items-center gap-2"
+            className="ml-4 text-white px-4 py-2 rounded-lg flex items-center gap-2"
           >
             {theme === "light" ? (
               <>
@@ -110,7 +120,11 @@ const Navbar = () => {
                 <li
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
+                    active === nav.title
+                      ? "text-white"
+                      : theme === "light"
+                      ? "text-black-100"
+                      : "text-secondary"
                   }`}
                   onClick={() => {
                     setToggle(!toggle);
