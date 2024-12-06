@@ -77,7 +77,7 @@ const Quiz = () => {
           {feedback && (
             <button
               onClick={nextQuestion}
-              className="mt-4 bg-blue-500 text-white p-2 rounded-lg"
+              className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary mt-4"
             >
               Next Question
             </button>

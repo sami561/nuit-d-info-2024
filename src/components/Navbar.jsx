@@ -55,8 +55,9 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex ">
-            EPI-FRATENITÉ SANS BANNIÉRES
+          <p className="font-bold cursor-pointer flex">
+            <span className="text-purple-500">EPI-</span>
+            <span className="text-cyan-400">FRATENITÉ SANS BANNIÉRES</span>
           </p>
         </Link>
 
