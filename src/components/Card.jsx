@@ -5,7 +5,7 @@ export default function Card({ text, img }) {
         <img
           src={img}
           alt="Card Image"
-          className="w-50 h-50"
+          className="w-50 h-50 rounded-sm"
           style={{
             pointerEvents: "none",
             userSelect: "none",
@@ -14,7 +14,7 @@ export default function Card({ text, img }) {
           }}
         />
         <p
-          className="text-primary-content text-lg font-bold text-center select-none p-4"
+          className="text-primary-content text-xs font-bold text-center select-none p-4"
           style={{ color: "#1b1b1b" }}
         >
           {text}

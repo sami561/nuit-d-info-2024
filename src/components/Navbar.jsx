@@ -90,9 +90,6 @@ const Navbar = () => {
               </>
             )}
           </button>
-          <button className="hidden sm:flex  text-white px-6 py-2 rounded-lg font-medium">
-            se connecter
-          </button>
         </ul>
 
         <div className="sm:hidden flex flex-1 justify-end items-center">

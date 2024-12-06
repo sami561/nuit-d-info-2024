@@ -2,33 +2,13 @@ import { motion } from "framer-motion";
 import { slideIn } from "../utils/motion";
 import { useState } from "react";
 import Question from "../components/Question";
-import { jobit } from "../assets";
 import Fireworks from "../components/Fireworks";
-
+import { questions } from "../constants/index";
 const Quiz = () => {
-  const questions = [
-    {
-      question: "Does the ocean produce more than 50% of Earth's oxygen?",
-      answer: false,
-      img: jobit,
-    },
-    {
-      question:
-        "Is the salt concentration in our blood similar to that of ancient oceans?",
-      answer: true,
-      img: jobit,
-    },
-    {
-      question: "Can ocean pollution directly affect human health?",
-      answer: true,
-      img: jobit,
-    },
-  ];
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [feedback, setFeedback] = useState("");
   const [showFireworks, setShowFireworks] = useState(false);
-
+  console.log(questions[currentQuestionIndex].image);
   const onChoice = (answerUser) => {
     const correctAnswer = questions[currentQuestionIndex].answer;
 
@@ -66,7 +46,7 @@ const Quiz = () => {
       >
         <Question
           key={currentQuestionIndex}
-          img={questions[currentQuestionIndex].img}
+          img={questions[currentQuestionIndex].image}
           question={questions[currentQuestionIndex].question}
           onChoice={onChoice}
         />
