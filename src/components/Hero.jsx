@@ -5,7 +5,6 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { logo } from "../assets";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Hero = () => {
   return (
@@ -30,8 +29,8 @@ const Hero = () => {
 
         {/* Section Description */}
         <p className={styles.sectionSubText}>
-          We are a global community of developers, designers, and creators who
-          are passionate about building the future of the web.
+          The ocean and the human body share a vital balance. By protecting the
+          ocean, we protect ourselves. Join us in making a difference.
         </p>
 
         <Link
