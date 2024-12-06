@@ -1,0 +1,86 @@
+# Documentation: Project Overview and Components
+
+## Langages et frameworks utilisés
+
+### Langages
+- **JavaScript** : Utilisé pour la logique de l'application.
+- **HTML** : Structure de base des composants, fournie via JSX dans React.
+- **CSS** : Appliqué via des classes Tailwind CSS pour la mise en forme et la disposition.
+
+### Frameworks et bibliothèques
+- **React** : Framework JavaScript pour la création de l'interface utilisateur.
+- **Tailwind CSS** : Utilisé pour un style rapide et réactif.
+- **React Router** : Gère la navigation entre les pages de l'application.
+- **Framer Motion** : Fournit des animations fluides pour des transitions visuelles.
+- **React-Tinder-Card** : Permet la fonctionnalité de "swipe" pour un style interactif de choix.
+
+---
+
+## Fonctionnalités principales
+
+### 1. **Composant Question**
+Ce composant gère une question individuelle, avec un visuel et des options de choix ("Vrai" ou "Faux") que l'utilisateur peut sélectionner en swipant ou en cliquant.
+
+#### Fonctionnalités du composant
+- **Swipe gauche/droite** :
+  - **Gauche** : L'utilisateur sélectionne "Vrai".
+  - **Droite** : L'utilisateur sélectionne "Faux".
+- **Responsive Design** :
+  - Sur les écrans larges (>768px), un layout horizontal est utilisé.
+  - Sur les écrans petits (<768px), le layout devient vertical.
+- **Gestion des événements** :
+  - **Redimensionnement** : Adapte dynamiquement la mise en page lorsque la taille de la fenêtre change.
+
+#### Structure principale
+```jsx
+<Question
+  img={img} // Image associée à la question
+  question={question} // Texte de la question
+  onChoice={onChoice} // Fonction appelée après le choix
+/>
+```
+
+### 2. **Composant Hero**
+Le composant Hero agit comme la page d'accueil, introduisant le but du projet et guidant l'utilisateur vers le quiz.
+
+#### Fonctionnalités du composant
+- **Canvas 3D avec EarthCanvas** : Affiche une animation de globe terrestre interactive.
+- **Lien vers le quiz** : Un bouton stylé redirige l'utilisateur vers la section quiz.
+- **Responsive Design** : S'adapte aux différentes tailles d'écran.
+
+#### Structure principale
+```jsx
+<Hero />
+```
+
+---
+
+## Fonctionnement technique
+
+### Gestion des interactions utilisateur
+- Les choix utilisateur (swipe ou clic) déclenchent la fonction `onChoice`, qui transmet la réponse (vrai/faux) à la logique principale.
+
+### Adaptabilité
+- Le composant `Question` utilise `useEffect` pour détecter et répondre aux changements de taille de la fenêtre en temps réel.
+- Les classes Tailwind CSS permettent de gérer les mises en page fluides pour les écrans petits et grands.
+
+### Animation et transitions
+- **Framer Motion** :
+  - Appliqué pour des effets d'entrée/sortie ("slide-in") sur les composants.
+  - Renforce l'expérience utilisateur par des animations naturelles.
+
+### Navigation
+- **React Router** :
+  - Le bouton "Start Quiz" redirige l'utilisateur vers `/quiz` pour commencer le quiz.
+
+---
+
+## Cas d'utilisation
+1. **Questionnaire interactif** : Les utilisateurs peuvent interagir en swipant ou en cliquant pour répondre aux questions sur la protection des océans.
+2. **Introduction éducative** : La page d'accueil sensibilise les utilisateurs à l'importance des océans pour l'environnement et le lien avec la santé humaine.
+
+---
+
+## Objectif global
+L'application vise à sensibiliser les utilisateurs à la préservation des océans en montrant les similitudes entre la santé humaine et la santé océanique. Une approche interactive et visuellement engageante aide à retenir leur attention tout en les éduquant.
+
