@@ -1,5 +1,5 @@
 import { Hero, StarsCanvas } from "../components";
-/* import Footer from "../components/Footer"; */
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -7,7 +7,7 @@ const Home = () => {
       <div className="relative z-0">
         <StarsCanvas />
         <Hero />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   );
