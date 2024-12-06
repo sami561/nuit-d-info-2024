@@ -60,7 +60,7 @@ const Navbar = () => {
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10 items-center">
+        <ul className="list-none hidden sm:flex flex-row gap-5 items-center">
           {navLinks.map((nav) => (
             <li
               key={nav.id}
@@ -69,15 +69,13 @@ const Navbar = () => {
               } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.title)}
             >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+              <a href={`${nav.id}`}>{nav.title}</a>
             </li>
           ))}
-          <button className="hidden sm:flex bg-secondary text-white px-6 py-2 rounded-lg font-medium">
-            se connecter
-          </button>
+
           <button
             onClick={toggleTheme}
-            className="ml-4 bg-secondary text-white px-4 py-2 rounded-lg flex items-center gap-2"
+            className="ml-4  text-white px-4 py-2 rounded-lg flex items-center gap-2"
           >
             {theme === "light" ? (
               <>
@@ -90,6 +88,9 @@ const Navbar = () => {
                 Clair
               </>
             )}
+          </button>
+          <button className="hidden sm:flex  text-white px-6 py-2 rounded-lg font-medium">
+            se connecter
           </button>
         </ul>
 

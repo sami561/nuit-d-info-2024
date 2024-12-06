@@ -29,7 +29,11 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 import moon from "./moon.png";
+import leftArrow from "./left-arrow.svg";
+import rightArrow from "./right-arrow.svg";
 export {
+  leftArrow,
+  rightArrow,
   logo,
   moon,
   backend,

@@ -1,17 +1,21 @@
-import { BrowserRouter } from "react-router-dom";
-import { Hero, Navbar, StarsCanvas } from "./components";
-const App = () => {
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Quiz from "./pages/Quiz";
+import Navbar from "./components/Navbar";
+function App() {
   return (
-    <BrowserRouter>
-      <div className="relative z-0 bg-primary">
-        <div className="relative z-0">
-          <StarsCanvas />
-          <Navbar />
-          <Hero />
+    <>
+      <Router>
+        <Navbar />
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/quiz" element={<Quiz />} />
+          </Routes>
         </div>
-      </div>
-    </BrowserRouter>
+      </Router>
+    </>
   );
-};
+}
 
 export default App;
