@@ -5,11 +5,12 @@ import Question from "../components/Question";
 import Fireworks from "../components/Fireworks";
 import { questions } from "../constants/index";
 import Footer from "../components/Footer";
-const Quiz = () => {
+
+const Quiz = ({ theme }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [feedback, setFeedback] = useState("");
   const [showFireworks, setShowFireworks] = useState(false);
-  console.log(questions[currentQuestionIndex].image);
+
   const onChoice = (answerUser) => {
     const correctAnswer = questions[currentQuestionIndex].answer;
 
@@ -38,7 +39,11 @@ const Quiz = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center w-[100vw] h-[100vh] mt-12">
+      <div
+        className={`flex items-center justify-center w-[100vw] h-[100vh] mt-12 ${
+          theme === "light" ? "bg-white-100" : "bg-primary"
+        }`}
+      >
         {/* Fireworks component */}
         {showFireworks && <Fireworks show={showFireworks} />}
 
@@ -67,7 +72,7 @@ const Quiz = () => {
           </div>
         </motion.div>
       </div>
-      <Footer />
+      <Footer theme={theme} />
     </>
   );
 };
